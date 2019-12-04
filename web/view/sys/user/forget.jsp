@@ -12,9 +12,10 @@
 </head>
 <body>
 <div class="container" style="width: 400px">
+    <h2>忘记密码</h2>
     <form action="/sys/user/forgetPassword" mehtod="get">
         账号：<input type="text" name="account"><br><br>
-        密码：<input type="text" name="password"><br><br>
+        新密码：<input type="text" name="password"><br><br>
         邮箱：<input type="text" name="email" id="email">
         <a class="btn btn-info" id="btn_sendEmail">发送</a><span id="timeStr"></span><br><br>
         验证码：<input type="text" name="code" value=""><br><br>

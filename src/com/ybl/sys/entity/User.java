@@ -13,7 +13,7 @@ public class User {
     private String email;
     private String birthDate;
     private String createTime;
-    private String createBy;
+    private Integer createBy;
     private Integer delFlag;
 
     public String getDeptName() {
@@ -96,11 +96,11 @@ public class User {
         this.createTime = createTime;
     }
 
-    public String getCreateBy() {
+    public Integer getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(String createBy) {
+    public void setCreateBy(Integer createBy) {
         this.createBy = createBy;
     }
 

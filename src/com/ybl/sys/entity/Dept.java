@@ -2,6 +2,8 @@ package com.ybl.sys.entity;
 
 public class Dept {
 
+    private Integer deptCount;
+
     private String createPerson;
     private Integer id;
     private String name;
@@ -48,11 +50,20 @@ public class Dept {
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }
+
     public String getCreatePerson() {
         return createPerson;
     }
 
     public void setCreatePerson(String createPerson) {
         this.createPerson = createPerson;
+    }
+
+    public Integer getDeptCount() {
+        return deptCount;
+    }
+
+    public void setDeptCount(Integer deptCount) {
+        this.deptCount = deptCount;
     }
 }

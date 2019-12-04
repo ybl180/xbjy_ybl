@@ -10,3 +10,23 @@
         list-style: none;
     }
 </style>
+
+<%--<script src="${path}/static/vendor/jquery/jquery.min.js"></script>--%>
+<%--<script src="${path}/static/vendor/popper.js/umd/popper.min.js"></script>--%>
+<%--<script src="${path}/static/vendor/bootstrap/js/bootstrap.min.js"></script>--%>
+<%--<script src="${path}/static/vendor/jquery.cookie/jquery.cookie.js"></script>--%>
+<%--<script src="${path}/static/vendor/chart.js/Chart.min.js"></script>--%>
+<%--<script src="${path}/static/vendor/jquery-validation/jquery.validate.min.js"></script>--%>
+<%--<script src="${path}/static/js/charts-home.js"></script>--%>
+<%--<script src="${path}/static/js/front.js"></script>--%>
+<%--<script src="${path}/static/js/custom.js"></script>--%>
+<%--<!-- Bootstrap CSS-->--%>
+<%--<link rel="stylesheet" href="${path}/static/vendor/bootstrap/css/bootstrap.min.css">--%>
+<%--<!-- Font Awesome CSS-->--%>
+<%--<link rel="stylesheet" href="${path}/static/vendor/font-awesome/css/font-awesome.min.css">--%>
+<%--<!-- Custom Font Icons CSS-->--%>
+<%--<link rel="stylesheet" href="${path}/static/css/font.css">--%>
+<%--<!-- theme stylesheet-->--%>
+<%--<link rel="stylesheet" href="${path}/static/css/style.default.css" id="theme-stylesheet">--%>
+<%--<!-- Custom stylesheet - for your changes-->--%>
+<%--<link rel="stylesheet" href="${path}/static/css/custom.css">--%>

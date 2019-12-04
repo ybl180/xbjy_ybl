@@ -45,11 +45,15 @@ public class DeptServlet extends BaseServlet {
         page.setCount(count);
 
         List<Dept> deptList = deptService.listDept(deptName, page);
+        for (Dept aDeptList : deptList) {
+            //每个部门下的人数
+            aDeptList.setDeptCount(deptService.deptCountById(aDeptList.getId()));
+        }
 
         request.setAttribute("deptList", deptList);
         request.setAttribute("deptName", deptName);
         request.setAttribute("page", page);
-        request.getRequestDispatcher("/view/sys/dept/list.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/sys/dept/listDept.jsp").forward(request, response);
     }
 
     public void deleteById(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -57,12 +61,46 @@ public class DeptServlet extends BaseServlet {
         if (id == null) {
             return;
         }
+        PrintWriter out = response.getWriter();
         Integer deptCountById = deptService.deptCountById(Integer.valueOf(id));
         if (deptCountById == 0) {
             deptService.deleteDeptById(Integer.valueOf(id));
+            out.append("200");
+        } else {
+            out.append("400");
         }
-        request.getRequestDispatcher("/sys/dept/listAll").forward(request, response);
-//        PrintWriter out = response.getWriter();
-//        out.append("400");
+    }
+
+    public void add(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String deptName = request.getParameter("name");
+        Dept dept = new Dept();
+        dept.setName(deptName);
+        dept.setCreateBy(this.getLoginUser().getId());
+        deptService.addDept(dept);
+        response.sendRedirect("/sys/dept/listAll");
+    }
+
+    public void getDeptById(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String id = request.getParameter("id");
+        if (id == null) {
+            return;
+        }
+        Dept deptById = deptService.getDeptById(Integer.valueOf(id));
+        request.setAttribute("dept", deptById);
+        request.getRequestDispatcher("/view/sys/dept/updateDept.jsp").forward(request, response);
+    }
+
+    public void update(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String name = request.getParameter("name");
+        String id = request.getParameter("id");
+        if (id == null) {
+            return;
+        }
+        Dept dept = new Dept();
+        dept.setName(name);
+        dept.setId(Integer.valueOf(id));
+        dept.setCreateBy(super.getLoginUser().getId());
+        deptService.updateDept(dept);
+        response.sendRedirect("/sys/dept/listAll");
     }
 }

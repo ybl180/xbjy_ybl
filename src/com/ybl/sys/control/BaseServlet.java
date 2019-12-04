@@ -1,9 +1,13 @@
 package com.ybl.sys.control;
 
+import com.ybl.sys.constants.SysConstants;
+import com.ybl.sys.entity.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -16,8 +20,22 @@ import java.lang.reflect.Method;
  * @desciption
  */
 public class BaseServlet extends HttpServlet {
+    private User loginUser = new User();
+
+    public User getLoginUser() {
+        return loginUser;
+    }
+
+    public void setLoginUser(User loginUser) {
+        this.loginUser = loginUser;
+    }
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
+        //取出session中登录信息
+        HttpSession session = req.getSession();
+        loginUser = (User) session.getAttribute(SysConstants.SESSION_LOGIN_NAME);
+
         String uri = req.getRequestURI();
         String[] methodArr = uri.split("/");
         uri = methodArr[methodArr.length - 1];

@@ -5,6 +5,7 @@ import com.ybl.sys.dao.DeptDao;
 import com.ybl.sys.entity.Dept;
 import com.ybl.sys.entity.Page;
 import com.ybl.sys.service.DeptService;
+import com.ybl.utils.DateUtil;
 
 import java.util.List;
 
@@ -72,5 +73,40 @@ public class DeptServiceImpl implements DeptService {
      */
     public void deleteDeptById(Integer deptId) {
         deptDao.deleteDeptById(deptId);
+    }
+
+    /***
+    *@desciption   添加部门
+    *@author ybl
+    *@date 2019/12/4 12:05
+    *@param [dept]
+    *@return void
+    */
+    public void addDept(Dept dept){
+        dept.setCreateTime(DateUtil.getDateStr());
+        deptDao.addDept(dept);
+    }
+
+    /***
+     *@desciption 通过id获取部门
+     *@author ybl
+     *@date 2019/12/4 12:04
+     *@param [id]
+     *@return com.ybl.sys.entity.Dept
+     */
+    public Dept getDeptById(Integer id) {
+        return deptDao.getDeptById(id);
+    }
+
+    /***
+     *@desciption 更改部门信息
+     *@author ybl
+     *@date 2019/12/4 12:04
+     *@param [dept]
+     *@return void
+     */
+    public void updateDept(Dept dept) {
+        dept.setCreateTime(DateUtil.getDateStr());
+        deptDao.updateDept(dept);
     }
 }

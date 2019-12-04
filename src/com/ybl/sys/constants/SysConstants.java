@@ -9,4 +9,6 @@ package com.ybl.sys.constants;
  */
 public class SysConstants {
     public static final String SESSION_EMAIL_CODE = "sessionEmailCode";
+    public static final String SESSION_LOGIN_NAME = "sessionLoginName";
+    public static final String SESSION_PIC_CODE_NAME = "sessionPicCodeName";
 }

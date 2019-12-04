@@ -52,13 +52,14 @@ public class UserServlet extends BaseServlet {
         request.setAttribute("page", page);
         request.setAttribute("condition", condition);
         request.getRequestDispatcher(getServletContext().getContextPath() + "/view/sys/user/list.jsp").forward(request, response);
-
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = new User();
         Map<String, String[]> map = request.getParameterMap();
         BeanUtils.populate(user, map);
+        //设置创建人
+        user.setCreateBy(super.getLoginUser().getId());
         userService.addUser(user);
         response.sendRedirect("/sys/user/list");
     }

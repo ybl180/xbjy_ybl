@@ -101,4 +101,20 @@ public class UserServiceImpl implements UserService {
         user.setPassword(MDUtil.md5(user.getPassword()));
         userDao.updatePassword(user);
     }
+
+    /***
+     *@desciption 登录验证
+     *@author ybl
+     *@date 2019/12/4 18:07
+     *@param [user]
+     *@return java.util.List<com.ybl.sys.entity.User>
+     */
+    public List<User> checkLogin(User user) {
+        try {
+            return userDao.checkLogin(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

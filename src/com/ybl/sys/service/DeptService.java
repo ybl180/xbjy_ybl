@@ -41,13 +41,13 @@ public interface DeptService {
     public Integer count(String deptName);
 
     /***
-    *@desciption  部门下的人数
-    *@author ybl
-    *@date 2019/12/3 19:56
-    *@param [deptId]
-    *@return java.lang.Integer
-    */
-    public Integer deptCountById(Integer deptId) ;
+     *@desciption 部门下的人数
+     *@author ybl
+     *@date 2019/12/3 19:56
+     *@param [deptId]
+     *@return java.lang.Integer
+     */
+    public Integer deptCountById(Integer deptId);
 
     /***
      *@desciption 通过id删除部门
@@ -57,4 +57,31 @@ public interface DeptService {
      *@return void
      */
     public void deleteDeptById(Integer deptId);
+
+    /***
+     *@desciption 添加部门
+     *@author ybl
+     *@date 2019/12/4 10:49
+     *@param [dept]
+     *@return void
+     */
+    public void addDept(Dept dept);
+
+    /***
+    *@desciption 通过id获取部门
+    *@author ybl
+    *@date 2019/12/4 12:04
+    *@param [id]
+    *@return com.ybl.sys.entity.Dept
+    */
+    public Dept getDeptById(Integer id) ;
+
+    /***
+    *@desciption 更改部门信息
+    *@author ybl
+    *@date 2019/12/4 12:04
+    *@param [dept]
+    *@return void
+    */
+    public void updateDept(Dept dept) ;
 }
