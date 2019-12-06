@@ -73,4 +73,8 @@ public class UserDao {
         return template.query(sql, new BeanPropertyRowMapper<>(User.class), user.getAccount(), user.getPassword());
     }
 
+//    获取创建时间最早的用户
+//    String sql="select * from sys_user order by create_time asc limit 1"
+//    获取创建时间最晚的用户
+//    String sql="select * from sys_user order by create_time desc limit 1"
 }

@@ -94,6 +94,13 @@ public class DeptServlet extends BaseServlet {
         }
     }
 
+    /***
+    *@desciption 添加部门
+    *@author ybl
+    *@date 2019/12/6 12:16
+    *@param [request, response]
+    *@return void
+    */
     public void add(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String deptName = request.getParameter("name");
         Dept dept = new Dept();
@@ -103,6 +110,13 @@ public class DeptServlet extends BaseServlet {
         response.sendRedirect("/sys/dept/listAll");
     }
 
+    /***
+    *@desciption  通过id获取部门的信息
+    *@author ybl
+    *@date 2019/12/6 12:16
+    *@param [request, response]
+    *@return void
+    */
     public void getDeptById(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String id = request.getParameter("id");
         if (id == null) {
@@ -113,6 +127,13 @@ public class DeptServlet extends BaseServlet {
         request.getRequestDispatcher("/view/sys/dept/updateDept.jsp").forward(request, response);
     }
 
+    /***
+    *@desciption 更新部门信息
+    *@author ybl
+    *@date 2019/12/6 12:17
+    *@param [request, response]
+    *@return void
+    */
     public void update(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String name = request.getParameter("name");
         String id = request.getParameter("id");

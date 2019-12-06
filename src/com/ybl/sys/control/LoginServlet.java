@@ -72,7 +72,6 @@ public class LoginServlet extends BaseServlet {
             }
             application.setAttribute(SysConstants.APPLICATION_LOGIN_COUNT, count);
 
-
             //将用户信息存入session
             session.setAttribute(SysConstants.SESSION_LOGIN_NAME, list.get(0));
 
@@ -133,7 +132,6 @@ public class LoginServlet extends BaseServlet {
                 }
             }
         }
-
         response.sendRedirect("/index.jsp");
     }
 
