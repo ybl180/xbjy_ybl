@@ -67,6 +67,6 @@ public class DeptDao {
 
     public void updateDept(Dept dept) {
         String sql = "update sys_dept set name=?,create_time=? ,create_by=? where id=?";
-        template.update(sql, dept.getName(), dept.getCreateTime(),dept.getCreateBy(), dept.getId());
+        template.update(sql, dept.getName(), dept.getCreateTime(), dept.getCreateBy(), dept.getId());
     }
 }

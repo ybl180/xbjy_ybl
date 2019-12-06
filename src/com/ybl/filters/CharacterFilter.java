@@ -11,7 +11,7 @@ import java.io.IOException;
  * @version 1.0.1
  * @conpany 东风标准
  * @date 2019/12/4 17:53
- * @desciption
+ * @desciption 字符编码过滤
  */
 @WebFilter("/*")
 public class CharacterFilter implements Filter {

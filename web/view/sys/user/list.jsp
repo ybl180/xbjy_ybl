@@ -23,20 +23,26 @@
             <input type="submit" value="查询" class="btn btn-success">
             <a href="/view/sys/user/add.jsp" class="btn btn-warning ">添加</a>
         </form>
-        <table class="table table-striped table-bordered table-hover">
-            <tr>
-                <th>序号</th>
-                <th>部门名称</th>
-                <th>账号</th>
-                <th>姓名</th>
-                <th>年龄</th>
-                <th>性别</th>
-                <th>出生日期</th>
-                <th>创建时间</th>
-                <th>操作</th>
-            </tr>
-            <c:forEach var="user" items="${list}" varStatus="status">
+
+        <form action="/sys/user/batchDelete">
+            <input class="btn btn-danger" type="submit" value="批量删除" id="batchDelete">
+
+            <table class="table table-striped table-bordered table-hover">
                 <tr>
+                    <th></th>
+                    <th>序号</th>
+                    <th>部门名称</th>
+                    <th>账号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>出生日期</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                <c:forEach var="user" items="${list}" varStatus="status">
+                <tr>
+                    <td><input type="checkbox" name="checkDelete" value="${user.id}"></td>
                     <td>${status.index+1}</td>
                     <td>${user.deptName}</td>
                     <td>${user.account}</td>
@@ -61,8 +67,8 @@
                         <a href="/sys/user/deleteById?id=${user.id}" class="btn btn-danger">删除</a>
                     </td>
                 </tr>
-
-            </c:forEach>
+                </c:forEach>
+        </form>
         </table>
         <a href="/sys/user/list?account=${account}&page=1" class="btn btn-info">首页</a>
         <a href="/sys/user/list?account=${account}&page=${page.pageCurrent<=1?1:(page.pageCurrent-1)}"

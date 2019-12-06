@@ -134,3 +134,35 @@ public class ImgCodeUtil {
         return text;
     }
 }
+
+
+
+
+
+////使用方法步骤
+//servlet:
+//public void getPic(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//    ImgCodeUtil imgCodeUtil = new ImgCodeUtil();
+//    //获取验证码图片
+//    BufferedImage image = imgCodeUtil.getImage();
+//    ////获取验证码文本内容
+//    String code = imgCodeUtil.getText();
+//    //把图片验证码存入session
+//    HttpSession session = request.getSession();
+//    session.setAttribute(SysConstants.SESSION_PIC_CODE_NAME, code);
+//    // 禁止图像缓存。
+//    response.setHeader("Pragma", "no-cache");
+//    response.setHeader("Cache-Control", "no-cache");
+//    response.setDateHeader("Expires", 0);
+//    response.setContentType("image/jpeg");
+//    // 将图像输出到Servlet输出流中。
+//    ServletOutputStream sos = response.getOutputStream();
+//    ImageIO.write(image, "jpeg", sos);
+//    sos.flush();
+//    sos.close();
+//}
+//html+js：
+//<img src="/sys/login/getPic" alt="无法加载" id="img" onclick="getPic()">
+//function getPic() {
+//    document.getElementById("img").src = document.getElementById("img").src + "?nocache=" + new Date().getTime();
+//}

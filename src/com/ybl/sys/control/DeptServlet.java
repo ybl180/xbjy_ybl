@@ -24,6 +24,13 @@ import java.util.List;
 public class DeptServlet extends BaseServlet {
     DeptServiceImpl deptService = new DeptServiceImpl();
 
+    /***
+    *@desciption  查出所有的部门
+    *@author ybl
+    *@date 2019/12/5 17:08
+    *@param [req, resp]
+    *@return void
+    */
     public void list(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         List<Dept> depts = deptService.listAll();
         String str = JSON.toJSONString(depts);
@@ -31,6 +38,13 @@ public class DeptServlet extends BaseServlet {
         out.append(str);
     }
 
+    /***
+     *@desciption  模糊条件，分页 查出所有的部门
+     *@author ybl
+     *@date 2019/12/5 17:08
+     *@param [req, resp]
+     *@return void
+     */
     public void listAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //获取查询部门名
         String deptName = request.getParameter("deptName");
@@ -56,6 +70,13 @@ public class DeptServlet extends BaseServlet {
         request.getRequestDispatcher("/view/sys/dept/listDept.jsp").forward(request, response);
     }
 
+    /***
+    *@desciption  通过id逻辑删除部门 （部门下有人不能删除）
+    *@author ybl
+    *@date 2019/12/5 17:09
+    *@param
+    *@return
+    */
     public void deleteById(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String id = request.getParameter("id");
         if (id == null) {
@@ -65,8 +86,10 @@ public class DeptServlet extends BaseServlet {
         Integer deptCountById = deptService.deptCountById(Integer.valueOf(id));
         if (deptCountById == 0) {
             deptService.deleteDeptById(Integer.valueOf(id));
+            //删除成功
             out.append("200");
         } else {
+            //删除失败
             out.append("400");
         }
     }

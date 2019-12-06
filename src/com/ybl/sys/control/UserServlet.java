@@ -4,6 +4,7 @@ import com.ybl.sys.constants.SysConstants;
 import com.ybl.sys.entity.TimeCondition;
 import com.ybl.sys.entity.Page;
 import com.ybl.sys.entity.User;
+import com.ybl.sys.service.DeptService;
 import com.ybl.sys.service.impl.UserServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -88,13 +90,20 @@ public class UserServlet extends BaseServlet {
         response.sendRedirect("/sys/user/list");
     }
 
+    /***
+     *@desciption 忘记密码，修改密码
+     *@author ybl
+     *@date 2019/12/5 18:29
+     *@param [request, response]
+     *@return void
+     */
     private void forgetPassword(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //判断验证码是否正确
         String code = request.getParameter("code");
         HttpSession session = request.getSession();
         Object obj = session.getAttribute(SysConstants.SESSION_EMAIL_CODE);
         //比较前端输入的code和session中的code
-        if(obj==null||!code.equals(obj.toString())){
+        if (obj == null || !code.equals(obj.toString())) {
             response.sendRedirect("/view/sys/user/forget.jsp");
             return;
         }
@@ -106,5 +115,17 @@ public class UserServlet extends BaseServlet {
         user.setPassword(password);
         userService.updatePassword(user);
         response.sendRedirect("/index.jsp");
+    }
+
+    private void batchDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //获取选中的值的id
+        String[] checkDelete = request.getParameterValues("checkDelete");
+        if (checkDelete != null) {
+            for (String checkDeleteStr : checkDelete) {
+                //通过id删除
+                userService.delByIdUser(Integer.valueOf(checkDeleteStr));
+            }
+        }
+        response.sendRedirect("/sys/user/list");
     }
 }
